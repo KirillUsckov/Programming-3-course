@@ -4,46 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car
-{
-    public class Car : Auto
-    {
-        private static int tankVolume, gasolineConsumption, distance, gasolineForDistance, refueling, distanceForRef;
+namespace Car {
+    public class Car {
+
+        private int tankVolume, 
+                        gasolineConsumption, 
+                        distance, 
+                        gasolineForDistance, 
+                        refueling, 
+                        distanceForRef;
        
-        public Car(int gasolineCon, int tankVol, int distanceForDrive)
-        {
+        public Car(int gasolineCon, int tankVol, int distanceForDrive) {
             tankVolume = tankVol;
             gasolineConsumption = gasolineCon;
             distance = distanceForDrive;
         }
 
-        public static void refuelingAmount()
-        {
+        public void refuelingAmount() {
             gasolineForDistance = distance * gasolineConsumption;//сколько литров для всего пути 120
             refueling = gasolineForDistance / tankVolume - 1;//сколько дозаправок надо сделать
-            //Console.WriteLine(gasolineForDistance % tankVolume);
-            Console.Write("Требуется " + refueling + " дозаправок.\n");
+            if (refueling != 0) {
+                Console.Write("Требуется " + refueling + " дозаправок.\n");
+            }
         }
 
-        public static void gasolineForRefueling()
-        {
+        public void gasolineForRefueling() {
             Console.Write((refueling * tankVolume) + " литров надо дозаправить.\n");
         }
 
-        public static void distanceForRefueling()
-        {
+        public void distanceForRefueling() {
             Console.WriteLine("Дозаправки будут на:");
             int newRefueling = refueling + 1; //сколько полных баков надо на весь путь
             distanceForRef = distance / newRefueling; // сколько км можно проехать на 1 бак
             int newDistance = distance - (distance / newRefueling); //дистанция - 1 полный бак
-            for (int i = 1; distanceForRef < newDistance; i++)
-            {
+            for (int i = 1; distanceForRef < newDistance; i++) {
                 distanceForRef = distance / newRefueling * i;
                 Console.WriteLine(distanceForRef + " km.");
             }
         }
-        public static void theLastRefueling()
-        {
+
+        public void theLastRefueling() {
             int gasolineVal = (distance - distanceForRef) * gasolineConsumption; // сколько на весь путь
             Console.WriteLine("Последняя дозаправка на " + gasolineVal + " л.");
         }

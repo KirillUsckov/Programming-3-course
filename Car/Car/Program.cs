@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-
+namespace Car {
+    class Program {
+        static void Main(string[] args) {
             Console.Write("Введите объем бака (л): ");
             String input = Console.ReadLine();
             int tank = int.Parse(input);
@@ -20,12 +16,13 @@ namespace Car
             Console.Write("Введите длину пути (км): ");
             input = Console.ReadLine();
             int distance = int.Parse(input);
+
             Car car = new Car(gasoline, tank, distance);
 
-            Car.refuelingAmount();
-            Car.gasolineForRefueling();
-            Car.distanceForRefueling();
-            Car.theLastRefueling();
+            car.refuelingAmount();
+            car.gasolineForRefueling();
+            car.distanceForRefueling();
+            car.theLastRefueling();
             Console.ReadKey();
         }
     }
